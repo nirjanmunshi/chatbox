@@ -1,21 +1,18 @@
 import 'package:chat_box/util/style/constants.dart';
-import 'package:chat_box/view/home/app_drawer.dart';
 import 'package:chat_box/view/home/chat/chat_body.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class ChatsScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _ChatsScreenState createState() => _ChatsScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ChatsScreenState extends State<ChatsScreen> {
   int _selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: buildAppBar(),
-      drawer: AppDrawer(width: width),
       body: ChatBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -40,6 +37,8 @@ class _HomePageState extends State<HomePage> {
       },
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.messenger), label: "Chats"),
+        BottomNavigationBarItem(icon: Icon(Icons.people), label: "People"),
+        BottomNavigationBarItem(icon: Icon(Icons.call), label: "Calls"),
         BottomNavigationBarItem(
           icon: CircleAvatar(
             radius: 14,
@@ -53,10 +52,8 @@ class _HomePageState extends State<HomePage> {
 
   AppBar buildAppBar() {
     return AppBar(
-      titleSpacing: 0.0,
-      title: Text(
-        "Chats",
-      ),
+      automaticallyImplyLeading: false,
+      title: Text("Chats"),
       actions: [
         IconButton(
           icon: Icon(Icons.search),
